@@ -1,0 +1,22 @@
+{
+  "name": "anon-discord",
+  "workspaces": [
+    "packages/*"
+  ],
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "circuit:compile": "cd packages/circuit && bun run compile",
+    "client:start": "cd packages/client && bun run start"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "eslint": "^9.15.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.3"
+  }
+}
