@@ -1,0 +1,18 @@
+{
+  "name": "circuit",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "check": "nargo check",
+    "execute": "nargo execute",
+    "prove": " bb prove -b ./target/circuit.json -w ./target/circuit.gz -o ./target/proof",
+    "vk": "bb write_vk -b ./target/circuit.json -o ./target/vk",
+    "verify": "bb verify -k ./target/vk -p ./target/proof"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

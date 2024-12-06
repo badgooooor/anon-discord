@@ -6,7 +6,11 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "circuit:compile": "cd packages/circuit && bun run compile",
+    "circuit:check": "cd packages/circuit && bun run check",
+    "circuit:execute": "cd packages/circuit && bun run execute",
+    "circuit:prove": "cd packages/circuit && bun run prove",
+    "circuit:vk": "cd packages/circuit && bun run vk",
+    "circuit:verify": "cd packages/circuit && bun run verify",
     "client:start": "cd packages/client && bun run start"
   },
   "devDependencies": {
