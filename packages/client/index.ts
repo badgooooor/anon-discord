@@ -1,5 +1,6 @@
 import { Events, SlashCommandBuilder } from 'discord.js'
 import { client } from './client';
+import { generateProof } from './prover';
 
 const BOT_TOKEN = import.meta.env.DISCORD_BOT_TOKEN;
 
@@ -27,8 +28,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
 		interaction.reply("pong");
 	}
 
-	if (interaction.commandName === 'getroles') {		
+	if (interaction.commandName === 'generateProof') {		
 		const userId = interaction.user.id;
+		const serverId = interaction.guild?.id;
 		const member = await interaction.guild?.members.fetch(userId);
 		const memberRoles = member?.roles.cache.map(role => ({
       id: role.id,
@@ -44,10 +46,20 @@ client.on(Events.InteractionCreate, async (interaction) => {
       permissions: role.permissions.toArray()
     }));
 
-		console.log('member roles:', memberRoles);
-		console.log('server roles:', serverRoles);
+		const proof = await generateProof(
+			serverId ?? '',
+			userId,
+			serverRoles?.at(0)?.id ?? '',
+			memberRoles?.map(item => item.id) ?? []
+		);
 
-		interaction.reply("role fetched in console");
+		if (proof?.proof) {
+			const proofString = Buffer.from(proof.proof.buffer, proof.proof.byteOffset, proof.proof.byteLength).toString('hex');
+			console.log('proof', proofString);
+			interaction.reply(`proving successful`);
+		} else {
+			interaction.reply('proving failed');
+		}
 	}
 })
 
