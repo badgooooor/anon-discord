@@ -3,7 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "check": "nargo check",
+    "test": "nargo test",
+    "check": "nargo check --overwrite",
     "execute": "nargo execute",
     "prove": " bb prove -b ./target/circuit.json -w ./target/circuit.gz -o ./target/proof",
     "vk": "bb write_vk -b ./target/circuit.json -o ./target/vk",
