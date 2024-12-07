@@ -21,6 +21,8 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@noir-lang/backend_barretenberg": "0.36.0",
+    "@noir-lang/noir_js": "0.36.0",
     "discord.js": "^14.16.3"
   }
 }
