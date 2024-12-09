@@ -2,16 +2,12 @@
 
 Discord bot client intended to retrive user's server roles, available server roles for generating proof.
 
-To install dependencies:
+## Sequence diagram of generating proof
 
-```bash
-bun install
+```mermaid
+sequenceDiagram
+    User->>+Bot: Send `/generateProof`
+    Bot-->>-Bot: Generate proof
+    Bot->>+AttestationContract: Attest proof
+    Bot->>+User: Send reply on proof successful
 ```
-
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.1.29. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
